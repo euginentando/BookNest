@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Shopping Cart</title>
+<link rel="stylesheet" href="catalog.css">
+
+</head>
+<body>
+
+    <header>
+        <h1>Book<span>Nest</span></h1>
+        <nav>
+            <ul>
+                <li><a href="Index.html">HOME</a></li>
+                <li><a href="catalog.html">CATALOG</a></li>
+                <li><a href="search.html">SEARCH</a></li>
+                <li><a href="about.html">ABOUT US</a></li>
+            </ul>
+        </nav>
+      </header>
+      <hr>
+      <h3>products</h3>
+      <hr>
+
+<div class="product-list">
+
+<div class="product">
+<img src="BOOKcOVER/BOOK3.webp" alt="Product 1">
+<h3> $10.00</h3>
+<button class="add-to-cart" data-product-id="product1">Add to Cart</button>
+</div>
+<div class="product">
+<img src="BOOKcOVER/23851_611e55863cc5f6.93326158_9781444910582_78695f03-c4c2-4832-91f4-5cbfa6b32b89_260x400.jpg" alt="Product 2">
+<h3> $20.00</h3>
+<button class="add-to-cart" data-product-id="product2">Add to Cart</button>
+</div>
+<div class="product">
+<img src="BOOKcOVER/BOOK1.jpg" alt="Product 3">
+<h3> $10.00</h3>
+<button class="add-to-cart" data-product-id="product3">Add to Cart</button>
+</div>
+<div class="product">
+<img src="BOOKcOVER/BOOOKK.jpg" alt="Product 4">
+<h3> $20.00</h3>
+<button class="add-to-cart" data-product-id="product4">Add to Cart</button>
+</div>
+<div class="product">
+<img src="BOOKcOVER/51IKsmc8pML._AC_UF1000,1000_QL80_.jpg" alt="Product 5">
+<h3> $10.00</h3>
+<button class="add-to-cart" data-product-id="product5">Add to Cart</button>
+</div>
+<div class="product">
+<img src="BOOKcOVER/9780796132277.webp" alt="Product 6">
+<h3> $20.00</h3>
+<button class="add-to-cart" data-product-id="product6">Add to Cart</button>
+</div>
+<div class="product">
+<img src="BOOKcOVER/9781911238287_gsorDLK.width-1000.jpg" alt="Product 7">
+<h3> $10.00</h3>
+<button class="add-to-cart" data-product-id="product7">Add to Cart</button>
+</div>
+<div class="product">
+<img src="BOOKcOVER/lf-2.jpg" alt="Product 8">
+<h3> $20.00</h3>
+<button class="add-to-cart" data-product-id="product8">Add to Cart</button>
+</div>
+<div class="product">
+<img src="BOOKcOVER/9781911238287_gsorDLK.width-1000.jpg" alt="Product 9">
+<h3> $20.00</h3>
+<button class="add-to-cart" data-product-id="product9">Add to Cart</button>
+</div>
+
+</div>
+
+<button id="goToCartBtn">Go to Cart</button>
+<button id="checkoutBtn">Checkout</button>
+
+<div id="cartPopup" class="popup">
+<h2>Your Cart</h2>
+<ul id="cartItemsList"></ul>
+<p><strong>Total: <span id="totalAmount">0.00</span></strong></p>
+<button id="closePopupBtn">Close</button>
+</div>
+
+<script>
+// JavaScript code to handle adding items to the cart, displaying the cart contents, and showing/hiding the popup
+const addToCartBtns = document.querySelectorAll('.add-to-cart');
+const goToCartBtn = document.getElementById('goToCartBtn');
+const checkoutBtn = document.getElementById('checkoutBtn');
+const cartPopup = document.getElementById('cartPopup');
+const cartItemsList = document.getElementById('cartItemsList');
+const totalAmountSpan = document.getElementById('totalAmount');
+const closePopupBtn = document.getElementById('closePopupBtn');
+
+let cartItems = [];
+let totalAmount = 0;
+
+addToCartBtns.forEach(btn => {
+btn.addEventListener('click', () => {
+const productId = btn.getAttribute('data-product-id');
+const productPrice = getProductPrice(productId); // Replace with your actual function
+
+if (!cartItems.includes(productId)) {
+cartItems.push(productId);
+totalAmount += productPrice;
+}
+
+updateCartDisplay();
+});
+});
+
+goToCartBtn.addEventListener('click', () => {
+showCartPopup();
+});
+
+checkoutBtn.addEventListener('click', () => {
+// Redirect to the checkout page (you'll need to create a separate HTML file for this)
+window.location.href = 'checkout.html';
+});
+
+closePopupBtn.addEventListener('click', () => {
+hideCartPopup();
+});
+
+function showCartPopup() {
+cartPopup.style.display = 'block';
+updateCartDisplay();
+}
+
+function hideCartPopup() {
+cartPopup.style.display = 'none';
+}
+
+function updateCartDisplay() {
+cartItemsList.innerHTML = '';
+totalAmount = 0;
+
+cartItems.forEach(productId => {
+const productPrice = getProductPrice(productId); // Replace with your actual function
+totalAmount += productPrice;
+
+const listItem = document.createElement('li');
+listItem.textContent = `${productId} - $${productPrice}`;
+cartItemsList.appendChild(listItem);
+});
+
+totalAmountSpan.textContent = totalAmount.toFixed(2);
+}
+
+function getProductPrice(productId) {
+// Example: Assuming you have a JSON object with product data
+const products = {
+product1: 10.00,
+product2: 20.00,
+product3: 10.00,
+product4: 20.00,
+product5: 10.00,
+product6: 20.00,
+product7: 10.00,
+product8: 20.00,
+product9: 10.00,
+// Add more products as needed
+};
+
+return products[productId];
+}
+</script>
+
+</body>
+</html>

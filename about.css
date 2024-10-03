@@ -1,0 +1,63 @@
+body {
+  font-family: roboto , sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav ul li {
+  margin-right: 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+}
+
+/*main styles*/
+
+h3 {
+  text-align: center;}
+
+  main {
+    padding: 20px;
+  }
+  
+  #about-us {
+    text-align: center;
+  }
+  
+  #about-us h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  #about-us p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom:   
+   10px;
+  }
+  
+  #about-us ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  #about-us ul li {
+    margin-bottom: 10px;
+  }

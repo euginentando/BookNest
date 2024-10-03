@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>checkout</title>
+  <link rel="stylesheet" href="checkout.css">
+</head>
+<body>
+  <header>
+    <h1>Book<span>Nest</span></h1>
+    <nav>
+        <ul>
+            <li><a href="Index.html">HOME</a></li>
+            <li><a href="catalog.html">CATALOG</a></li>
+            <li><a href="search.html">SEARCH</a></li>
+            <li><a href="about.html">ABOUT US</a></li>
+        </ul>
+    </nav>
+  </header>
+  <hr>
+  <h3>checkout</h3>
+  <hr>
+
+  <div class="checkout-container">
+    <h2>Checkout</h2>
+    
+    <form id="checkoutForm">
+    <div class="form-group">
+    <label for="name">Full Name:</label>
+    <input type="text" id="name" name="name" required>
+    </div>
+    
+    <div class="form-group">
+    <label for="email">Email   
+     Address:</label>
+    <input type="email" id="email" name="email" required>
+    </div>
+    
+    <div class="form-group">
+    <label for="address">Shipping   
+     Address:</label>
+    <textarea id="address" name="address" required></textarea>
+    </div>
+    
+    <div class="form-group">
+    <label for="cardNumber">Card   
+     Number:</label>
+    <input type="text" id="cardNumber" name="cardNumber" required>
+    </div>
+    
+    <div class="form-group">
+    <label for="expirationDate">Expiration   
+     Date:</label>
+    <input type="text" id="expirationDate" name="expirationDate"   
+     required>
+    </div>
+    
+    <div class="form-group">
+    <label for="cvv">CVV:</label>
+    <input type="text" id="cvv" name="cvv" required>
+    </div>
+    
+    <button type="submit">Place Order</button>
+    </form>
+    
+    <div   
+     class="order-success-popup">
+    <h2>Order Successful!</h2>
+    <p>Your order has been placed successfully. Check your email to track your parcel. Thank you!</p>
+    </div>
+    </div>
+
+    <script>
+
+const checkoutForm = document.getElementById('checkoutForm');
+const orderSuccessPopup = document.querySelector('.order-success-popup');
+
+checkoutForm.addEventListener('submit', async (event) => {
+event.preventDefault();
+
+
+await simulateProcessingOrder();
+
+showOrderSuccessPopup();
+});
+
+async function simulateProcessingOrder() {
+return new Promise(resolve => {
+setTimeout(() => {
+resolve();
+}, 5000); 
+});
+}
+
+function showOrderSuccessPopup() {
+orderSuccessPopup.style.display = 'block';
+}
+
+    </script>
+</body>
+</html>
